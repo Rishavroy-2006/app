@@ -142,26 +142,26 @@ def load_and_process_data():
             bio_state_totals = pd.DataFrame(columns=['total_bio_updates'])
         
         # Combine summaries
-        state_summary = pd.DataFrame({
-            'state': enrol_state_totals.index if not enrol_state_totals.empty else [],
-            'total_enrol': enrol_state_totals['total_enrol'] if not enrol_state_totals.empty else [],
-        })
+        if not enrol_state_totals.empty:
+            state_summary = enrol_state_totals[['total_enrol']].reset_index()
+        else:
+            state_summary = pd.DataFrame(columns=['state', 'total_enrol'])
         
         if not demo_state_totals.empty:
+            demo_reset = demo_state_totals[['total_demo_updates']].reset_index()
             state_summary = state_summary.merge(
-                demo_state_totals[['total_demo_updates']], 
-                left_on='state', 
-                right_index=True, 
+                demo_reset, 
+                on='state', 
                 how='left'
             )
         else:
             state_summary['total_demo_updates'] = 0
         
         if not bio_state_totals.empty:
+            bio_reset = bio_state_totals[['total_bio_updates']].reset_index()
             state_summary = state_summary.merge(
-                bio_state_totals[['total_bio_updates']], 
-                left_on='state', 
-                right_index=True, 
+                bio_reset, 
+                on='state', 
                 how='left'
             )
         else:
