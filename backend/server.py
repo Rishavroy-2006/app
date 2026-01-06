@@ -44,9 +44,8 @@ def load_and_process_data():
     global df_enrol, df_demo, df_bio, state_summary, enrol_monthly
     
     try:
-        DATA_DIR = "uidai_data"
-        
-        logger.info("Loading CSV files...")
+        DATA_DIR = ROOT_DIR.parent / "uidai_data"
+        logger.info(f"Loading CSV files from {DATA_DIR}...")
         
         # Load enrolment files
         enrol_files = glob.glob(os.path.join(DATA_DIR, "api_data_aadhar_enrolment_*.csv"))
