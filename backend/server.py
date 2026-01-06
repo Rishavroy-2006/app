@@ -44,7 +44,7 @@ def load_and_process_data():
     global df_enrol, df_demo, df_bio, state_summary, enrol_monthly
     
     try:
-        DATA_DIR = ROOT_DIR.parent / "uidai_data"
+        DATA_DIR = "/app/uidai_data"
         logger.info(f"Loading CSV files from {DATA_DIR}...")
         
         # Load enrolment files
