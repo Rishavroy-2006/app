@@ -46,7 +46,10 @@ def load_and_process_data():
     try:
         DATA_DIR = "/app/uidai_data"
         logger.info(f"Loading CSV files from {DATA_DIR}...")
-        
+
+        logger.info(f"Root contents: {os.listdir('/app')}")
+        logger.info(f"uidai_data contents: {os.listdir(DATA_DIR)}")
+
         # Load enrolment files
         enrol_files = glob.glob(os.path.join(DATA_DIR, "api_data_aadhar_enrolment_*.csv"))
         if not enrol_files:
