@@ -44,7 +44,7 @@ def load_and_process_data():
     global df_enrol, df_demo, df_bio, state_summary, enrol_monthly
     
     try:
-        DATA_DIR = "/app/uidai_data"
+        DATA_DIR = "uidai_data"
         
         logger.info("Loading CSV files...")
         
